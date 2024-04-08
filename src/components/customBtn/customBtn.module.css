@@ -1,0 +1,18 @@
+.btn {
+  display: inline-block;
+  padding: 5px 15px;
+  background-color: var(--primary-color);
+  border-radius: 10px;
+  color: var(--white);
+}
+
+.btn:hover {
+  background-color: var(--primary-hover-color);
+}
+
+.btn span {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 5px;
+  color: inherit;
+}
