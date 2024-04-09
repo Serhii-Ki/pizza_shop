@@ -1,13 +1,18 @@
 .btn {
   display: inline-block;
   padding: 5px 15px;
-  background-color: var(--primary-color);
   border-radius: 10px;
-  color: var(--white);
+  transition: background-color 0.5s ease;
 }
 
-.btn:hover {
-  background-color: var(--primary-hover-color);
+.filter-btn {
+  background-color: var(--filter-btn-color);
+  color: var(--text-color);
+}
+
+.filter-btn:hover {
+  background-color: var(--filter-btn-hover);
+  color: var(--white);
 }
 
 .btn span {

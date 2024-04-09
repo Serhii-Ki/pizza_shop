@@ -1,8 +1,11 @@
 :root {
   --primary-color: #0d2052;
-  --secondary-color: #6c757d;
-  --text-color: #000000;
   --primary-hover-color: #0c67ec;
+  --secondary-color: #f8770b;
+  --secondary-hover-color: #ff9100;
+  --text-color: #000000;
+  --filter-btn-color: rgba(169, 163, 163, 0.22);
+  --filter-btn-hover: #000000;
   --white: #FFF;
 }
 
@@ -16,8 +19,8 @@
 
 body{
   min-height: 100vh;
-  background: linear-gradient(to bottom right, #ece5e5, #6e7070);
   color: var(--text-color);
+  font-size: 18px;
 }
 
 button {
@@ -28,4 +31,13 @@ button {
   text-decoration: none;
   cursor: pointer;
   font-size: 18px;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul,
+li {
+  list-style: none;
 }

@@ -1,11 +1,14 @@
 import './App.css'
-import CustomBtn from "./components/customBtn/CustomBtn.tsx";
+import Header from "./components/header/Header.tsx";
+import FilterPanel from "./components/filterPanel/FilterPanel.tsx";
 
 function App() {
   return (
-    <>
-      <CustomBtn title={'some'} onClick={() => {}}/>
-    </>
+    <div className='container'>
+      <Header/>
+      <h1 className='title'>My pizzeria</h1>
+      <FilterPanel/>
+    </div>
   )
 }
 

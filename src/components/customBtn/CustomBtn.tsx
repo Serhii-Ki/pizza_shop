@@ -8,7 +8,7 @@ type ButtonPropsType = {
 
 function CustomBtn(props: ButtonPropsType) {
   return (
-      <button className={styles['btn']} onClick={props.onClick}>
+      <button className={`${styles.btn} ${styles['filter-btn']}`} onClick={props.onClick}>
         <span>{props.spanTitle}</span>
         {props.title}
       </button>

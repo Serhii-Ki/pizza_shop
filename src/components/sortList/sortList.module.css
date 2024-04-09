@@ -1,0 +1,37 @@
+.sort-wrapper {
+  display: flex;
+  gap: 5px;
+  position: relative;
+  cursor: pointer;
+}
+
+.sort-item {
+  color: var(--secondary-color);
+  text-decoration: underline dotted;
+}
+
+.sort-list {
+  display: none;
+}
+
+.sort-list-active {
+  display: flex;
+  flex-direction: column;
+  padding: 5px 0;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  position: absolute;
+  top: 25px;
+  left: 150px;
+}
+
+
+.list-item {
+  padding: 5px;
+  cursor: pointer;
+}
+
+.list-item:hover {
+  color: var(--white);
+  background-color: var(--secondary-hover-color);
+}
