@@ -1,16 +1,25 @@
 import styles from './customBtn.module.css';
+import cn from 'classnames';
 
 type ButtonPropsType = {
   title: string;
   spanTitle?: string;
+  addCount?: number;
   onClick: () => void;
+  classType: 'filter' | 'add';
+  isActive?: boolean;
 }
 
 function CustomBtn(props: ButtonPropsType) {
   return (
-      <button className={`${styles.btn} ${styles['filter-btn']}`} onClick={props.onClick}>
-        <span>{props.spanTitle}</span>
+      <button className={cn(styles['btn'], {
+        [styles['filter-btn']]: props.classType === 'filter',
+        [styles['add-btn']]: props.classType === 'add',
+        [styles['filter-active']]: props.isActive,
+      })} onClick={props.onClick}>
+        <span className={styles['add-span']}>{props.spanTitle}</span>
         {props.title}
+        {props.classType === 'add' && <span className={styles['add-count']}>{props.addCount}</span>}
       </button>
   );
 }

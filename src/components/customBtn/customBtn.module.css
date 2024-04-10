@@ -1,5 +1,4 @@
 .btn {
-  display: inline-block;
   padding: 5px 15px;
   border-radius: 10px;
   transition: background-color 0.5s ease;
@@ -15,9 +14,37 @@
   color: var(--white);
 }
 
-.btn span {
+.filter-active {
+  background-color: var(--filter-btn-hover);
+  color: var(--white);
+}
+
+.add-btn {
+  background-color: transparent;
+  border: 1px solid var(--secondary-color);
+  color: var(--secondary-color);
+}
+
+.add-btn:hover {
+  background-color: var(--secondary-color);
+  color: var(--white);
+}
+
+.add-span {
   display: inline-block;
   vertical-align: middle;
   margin-right: 5px;
   color: inherit;
+}
+
+.add-count {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 5px;
+  color: var(--white);
+  width: 25px;
+  height: 25px;
+  background-color: var(--secondary-color);
+  border-radius: 50%;
+  line-height: 25px;
 }
