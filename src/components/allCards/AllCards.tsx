@@ -1,15 +1,15 @@
 import Card from "../card/Card.tsx";
 import styles from './allCards.module.css';
+import {PizzasType} from "../../App.tsx";
 
-const AllCards = () => {
+type CardPropsType = {
+  pizzas: PizzasType[]
+}
+
+const AllCards = (props: CardPropsType) => {
   return (
       <div className={styles['cards-wrapper']}>
-        <Card/>
-        <Card/>
-        <Card/>
-        <Card/>
-        <Card/>
-        <Card/>
+        {props.pizzas.map(() => (<Card/>))}
       </div>
   );
 };
