@@ -1,9 +1,13 @@
 import CustomBtn from "../customBtn/CustomBtn.tsx";
 import styles from './card.module.css';
 import cn from 'classnames';
+import {PizzasType} from "../../App.tsx";
 
+type PizzaPropsType = {
+  pizza: PizzasType
+}
 
-const Card = () => {
+const Card = (props: PizzaPropsType) => {
   return (
       <div className={styles['card-wrapper']}>
         <img
@@ -11,24 +15,26 @@ const Card = () => {
             alt=""
             className={styles['img']}
         />
-        <h3 className={styles['title']}>Pizza Name</h3>
+        <h3 className={styles['title']}>{props.pizza.title}</h3>
         <div className={styles['descr-wrapper']}>
           <div className={styles['items-wrapper']}>
-            <span className={cn(styles['item'], {
-              [styles['active-item']]: true,
-            })}>Тонкое</span>
-            <span className={styles['item']}>Традиционное</span>
+            {/*<span className={cn(styles['item'], {*/}
+            {/*  [styles['active-item']]: true,*/}
+            {/*})}>Тонкое</span>*/}
+            {props.pizza.types.map((type: number, index ) =>
+                (<span className={cn(styles['item'], {
+                  [styles['active-item']]: index === 0,
+                })}>{type === 0 ? 'Тонкое' : 'Традиционное'}
+                </span>))}
           </div>
           <div className={styles['items-wrapper']}>
-            <span className={cn(styles['item'], {
-              [styles['active-item']]: true,
-            })}>26 см</span>
-            <span className={styles['item']}>30 см</span>
-            <span className={styles['item']}>40 см</span>
+            {props.pizza.sizes.map((size: number, index ) => (<span className={cn(styles['item'], {
+              [styles['active-item']]: index === 0,
+            })}>{size}</span>))}
           </div>
         </div>
         <div className={styles['menu']}>
-          <span className={styles['price']}>от 10 $</span>
+          <span className={styles['price']}>От {Math.trunc(props.pizza.price / 80)} $</span>
           <CustomBtn
               title={'Добавить'}
               spanTitle={'+'}
