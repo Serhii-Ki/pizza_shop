@@ -1,8 +1,10 @@
 import './App.css'
 import {useEffect, useState} from "react";
 import Header from "./components/header/Header.tsx";
-import FilterPanel from "./components/filterPanel/FilterPanel.tsx";
-import AllCards from "./components/allCards/AllCards.tsx";
+import Home from "./pages/Home.tsx";
+import {Route, Routes} from "react-router-dom";
+import Cart from "./pages/Cart.tsx";
+import NotFound from "./pages/NotFound.tsx";
 
 export type PizzasType = {
   id: number,
@@ -33,9 +35,11 @@ function App() {
   return (
     <div className='container'>
       <Header/>
-      <h1 className='title'>My pizzeria</h1>
-      <FilterPanel/>
-      <AllCards pizzas={pizzas} isLoading={isLoading}/>
+      <Routes>
+        <Route path='/' element={<Home pizzas={pizzas} isLoading={isLoading}/>}/>
+        <Route path='/cart' element={<Cart/>}/>
+        <Route path='/*' element={<NotFound/>}/>
+      </Routes>
     </div>
   )
 }

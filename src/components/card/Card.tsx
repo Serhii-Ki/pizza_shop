@@ -22,13 +22,13 @@ const Card = (props: PizzaPropsType) => {
             {/*  [styles['active-item']]: true,*/}
             {/*})}>Тонкое</span>*/}
             {props.pizza.types.map((type: number, index ) =>
-                (<span className={cn(styles['item'], {
+                (<span key={type} className={cn(styles['item'], {
                   [styles['active-item']]: index === 0,
                 })}>{type === 0 ? 'Тонкое' : 'Традиционное'}
                 </span>))}
           </div>
           <div className={styles['items-wrapper']}>
-            {props.pizza.sizes.map((size: number, index ) => (<span className={cn(styles['item'], {
+            {props.pizza.sizes.map((size: number, index ) => (<span key={size} className={cn(styles['item'], {
               [styles['active-item']]: index === 0,
             })}>{size}</span>))}
           </div>
