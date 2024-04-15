@@ -12,7 +12,7 @@ const Card = (props: PizzaPropsType) => {
       <div className={styles['card-wrapper']}>
         <img
             src="https://underpizza-image-storage.s3.us-east-2.amazonaws.com/sides/dEcc48jAvLAM5t2KY/0.webp"
-            alt=""
+            alt="pizza"
             className={styles['img']}
         />
         <h3 className={styles['title']}>{props.pizza.title}</h3>

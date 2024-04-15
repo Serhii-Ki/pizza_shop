@@ -48,3 +48,20 @@
   border-radius: 50%;
   line-height: 25px;
 }
+
+.carts-btn {
+  width: 40px;
+  height: 40px;
+  padding: 0px;
+  color: var(--secondary-color);
+  font-size: 27px;
+  font-weight: 900;
+  border: 1px solid var(--secondary-color);
+  border-radius: 100%;
+  text-align: center;
+  line-height: 40px;
+}
+
+.carts-btn:active {
+  border-color: var(--secondary-hover-color);
+}

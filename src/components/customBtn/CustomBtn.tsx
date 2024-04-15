@@ -6,7 +6,7 @@ type ButtonPropsType = {
   spanTitle?: string;
   addCount?: number;
   onClick: () => void;
-  classType: 'filter' | 'add';
+  classType: 'filter' | 'add' | 'carts';
   isActive?: boolean;
 }
 
@@ -15,6 +15,7 @@ function CustomBtn(props: ButtonPropsType) {
       <button className={cn(styles['btn'], {
         [styles['filter-btn']]: props.classType === 'filter',
         [styles['add-btn']]: props.classType === 'add',
+        [styles['carts-btn']]: props.classType === 'carts',
         [styles['filter-active']]: props.isActive,
       })} onClick={props.onClick}>
         <span className={styles['add-span']}>{props.spanTitle}</span>
