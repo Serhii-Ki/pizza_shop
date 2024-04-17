@@ -67,3 +67,59 @@
   font-size: 22px;
   font-weight: 900;
 }
+
+.sum {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 50px;
+}
+
+.count {
+  font-size: 22px;
+
+  span {
+    font-weight: 900;
+  }
+}
+
+.count-sum {
+  font-size: 22px;
+
+  span {
+    font-weight: 700;
+    color: var(--secondary-color);
+  }
+}
+
+.btn-menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 70px;
+}
+
+.link-back {
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 10px 20px;
+
+  &:hover {
+    background-color: black;
+    color: var(--white);
+    border-color: transparent;
+  }
+}
+
+.link-buy {
+  background-color: var(--secondary-color);
+  color: var(--white);
+  border-radius: 10px;
+  padding: 10px 20px;
+
+  &:hover {
+    background-color: var(--secondary-hover-color);
+    color: var(--white);
+    border-color: transparent;
+  }
+}

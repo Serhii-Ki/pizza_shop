@@ -28,7 +28,7 @@ const Cart = () => {
               }} classType={"carts"}/>
             </div>
             <p className={styles['price']}>20 $</p>
-            <CustomBtn title='X' onClick={() => {
+            <CustomBtn title='&#x2715;' onClick={() => {
             }} classType={"carts"}/>
           </div>
 
@@ -49,7 +49,7 @@ const Cart = () => {
               }} classType={"carts"}/>
             </div>
             <p className={styles['price']}>20 $</p>
-            <CustomBtn title='X' onClick={() => {
+            <CustomBtn title='&#x2715;' onClick={() => {
             }} classType={"carts"}/>
           </div>
 

@@ -1,17 +1,17 @@
 import styles from './sortList.module.css';
 import cn from 'classnames';
 import {useState} from "react";
+import {SortItemsType} from "../../App.tsx";
 
-type SortItemsType = 'популярности' | 'цене' | 'алфавиту';
+type SortListPropsType = {
+  sortList: SortItemsType[]
+  sortItem: SortItemsType
+  changeSortItem: (item: SortItemsType) => void
+}
 
-const SortList = () => {
-  const sortList: SortItemsType[] = ['популярности', 'цене', 'алфавиту'];
-  const [sortItem, setSortItem] = useState<SortItemsType>(sortList[0]);
+const SortList = (props: SortListPropsType) => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const changeSortItem = (item: SortItemsType) => {
-    setSortItem(item);
-  }
   const toggleSortList = () => {
     setIsOpen(!isOpen);
   }
@@ -20,15 +20,15 @@ const SortList = () => {
       <div className={styles['sort-wrapper']} onClick={toggleSortList}>
         <span>{isOpen ? '\u25B2' : '\u25BC'}</span>
         <span>Сортировать по: </span>
-        <span className={styles['sort-item']}>{sortItem}</span>
+        <span className={styles['sort-item']}>{props.sortItem}</span>
         <ul className={cn(styles['sort-list'], {
           [styles['sort-list-active']]: isOpen
         })}>
-          {sortList.map((item: SortItemsType) => (
+          {props.sortList.map((item: SortItemsType) => (
               <li
                   key={item}
                   className={styles['list-item']}
-                  onClick={() => changeSortItem(item)}
+                  onClick={() => props.changeSortItem(item)}
               >{item}</li>
           ))}
         </ul>
