@@ -1,20 +1,28 @@
 import styles from './filterList.module.css';
 import CustomBtn from "../customBtn/CustomBtn.tsx";
-import {useState} from "react";
+import {useDispatch, useSelector} from "react-redux";
+import {AppStore} from "../../redux/store.ts";
+import {setCategoryId} from "../../redux/slices/filterSlice.ts";
 
 export type FilterListType = "Все" | "Мясные" | "Вегетарианские" | "Гриль" | "Острые" | "Закрытые";
 function FilterList() {
   const filterList: FilterListType[] = ["Все", "Мясные", "Вегетарианские", "Гриль", "Острые", "Закрытые"];
-  const [activeFilter, setActiveFilter] = useState<FilterListType>("Все");
+  const dispatch = useDispatch();
+  const categoryId = useSelector<AppStore>(state => state.filter.categoryId);
+  // const [activeFilter, setActiveFilter] = useState<FilterListType>("Все");
 
-  const onChangeFilter = (filter: FilterListType) => {
-    setActiveFilter(filter);
+  const onChangeFilter = (categoryId: number) => {
+    dispatch(setCategoryId(categoryId));
   }
 
   return (
       <div className={styles['wrapper-list']}>
-        {filterList.map((item: FilterListType) => (
-            <CustomBtn key={item} title={item} onClick={() => onChangeFilter(item)} classType={'filter'} isActive={item === activeFilter}/>
+        {filterList.map((item: FilterListType, index: number) => (
+            <CustomBtn
+                key={item} 
+                title={item}
+                onClick={() => onChangeFilter(index)}
+                classType={'filter'} isActive={index === categoryId}/>
         ))}
       </div>
   );

@@ -1,10 +1,13 @@
-import './App.css'
+import {Route, Routes} from "react-router-dom";
 import {useEffect, useState} from "react";
+import {useSelector} from "react-redux";
+
 import Header from "./components/header/Header.tsx";
 import Home from "./pages/Home.tsx";
-import {Route, Routes} from "react-router-dom";
 import Cart from "./pages/Cart.tsx";
 import NotFound from "./pages/NotFound.tsx";
+import './App.css'
+import {AppStore} from "./redux/store.ts";
 
 export type PizzasType = {
   id: number,
@@ -25,6 +28,9 @@ function App() {
   const sortList: SortItemsType[] = ['популярности', 'цене', 'алфавиту'];
   const [sortItem, setSortItem] = useState<SortItemsType>(sortList[0]);
 
+  const categoryId = useSelector<AppStore>(state => state.filter.categoryId);
+
+
   const changeSortItem = (item: SortItemsType) => {
     setSortItem(item);
   }
@@ -32,7 +38,7 @@ function App() {
   useEffect(() => {
     setIsLoading(true);
     const url = new URL('https://66180a6c9a41b1b3dfbc17c9.mockapi.io/items');
-
+      if(categoryId){url.searchParams.append('category', String(categoryId));}
       switch(sortItem) {
         case 'популярности':
           url.searchParams.append('sortBy', 'rating');
@@ -52,9 +58,10 @@ function App() {
         .then(data => {
           setPizzas(data);
           setIsLoading(false);
+          console.log(data);
        });
     window.scrollTo(0, 0);
-  }, [sortItem])
+  }, [sortItem, categoryId])
 
   return (
     <div className='container'>
