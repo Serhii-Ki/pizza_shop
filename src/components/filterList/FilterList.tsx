@@ -9,7 +9,6 @@ function FilterList() {
   const filterList: FilterListType[] = ["Все", "Мясные", "Вегетарианские", "Гриль", "Острые", "Закрытые"];
   const dispatch = useDispatch();
   const categoryId = useSelector<AppStore>(state => state.filter.categoryId);
-  // const [activeFilter, setActiveFilter] = useState<FilterListType>("Все");
 
   const onChangeFilter = (categoryId: number) => {
     dispatch(setCategoryId(categoryId));

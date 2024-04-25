@@ -1,8 +1,8 @@
 import {createSlice} from "@reduxjs/toolkit";
 
-type SortNameType = 'популярности' | 'цене' | 'алфавиту';
+export type SortNameType = 'популярности' | 'цене' | 'алфавиту';
 
-type sortPropertyType = 'rating' | 'price' | 'title';
+export type sortPropertyType = 'rating' | 'price' | 'title';
 
 type SortType = {
   name: SortNameType;
@@ -29,10 +29,14 @@ export const filterSlice = createSlice({
   reducers: {
     setCategoryId(state: FilterStateType, action) {
       state.categoryId = action.payload;
+    },
+
+    setSortProperty(state: FilterStateType, action) {
+      state.sort = action.payload;
     }
   }
 });
 
-export const {setCategoryId} = filterSlice.actions;
+export const {setCategoryId, setSortProperty} = filterSlice.actions;
 
 export default filterSlice.reducer;

@@ -1,13 +1,16 @@
 import {Route, Routes} from "react-router-dom";
 import {useEffect, useState} from "react";
 import {useSelector} from "react-redux";
+import axios from "axios";
 
 import Header from "./components/header/Header.tsx";
 import Home from "./pages/Home.tsx";
 import Cart from "./pages/Cart.tsx";
 import NotFound from "./pages/NotFound.tsx";
-import './App.css'
 import {AppStore} from "./redux/store.ts";
+import {sortPropertyType} from "./redux/slices/filterSlice.ts";
+
+import './App.css'
 
 export type PizzasType = {
   id: number,
@@ -20,48 +23,30 @@ export type PizzasType = {
   rating: number
 }
 
-export type SortItemsType = 'популярности' | 'цене' | 'алфавиту';
 
 function App() {
   const [pizzas, setPizzas] = useState<PizzasType[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const sortList: SortItemsType[] = ['популярности', 'цене', 'алфавиту'];
-  const [sortItem, setSortItem] = useState<SortItemsType>(sortList[0]);
 
   const categoryId = useSelector<AppStore>(state => state.filter.categoryId);
+  const sortCategory = useSelector<AppStore>(state => state.filter.sort.sortProperty) as sortPropertyType;
 
-
-  const changeSortItem = (item: SortItemsType) => {
-    setSortItem(item);
-  }
 
   useEffect(() => {
     setIsLoading(true);
     const url = new URL('https://66180a6c9a41b1b3dfbc17c9.mockapi.io/items');
       if(categoryId){url.searchParams.append('category', String(categoryId));}
-      switch(sortItem) {
-        case 'популярности':
-          url.searchParams.append('sortBy', 'rating');
-          break
-        case 'цене':
-          url.searchParams.append('sortBy', 'price');
-          break
-        case 'алфавиту':
-          url.searchParams.append('sortBy', 'title');
-          break
-        default:
-          url.searchParams.append('sortBy', 'rating');
-      }
+      url.searchParams.append('sortBy', sortCategory);
 
-    fetch(url)
-        .then(response => response.json())
+    axios.get(url)
+        .then(response => response.data)
         .then(data => {
           setPizzas(data);
           setIsLoading(false);
-          console.log(data);
-       });
+        });
+
     window.scrollTo(0, 0);
-  }, [sortItem, categoryId])
+  }, [sortCategory, categoryId])
 
   return (
     <div className='container'>
@@ -70,9 +55,6 @@ function App() {
         <Route path='/' element={<Home
             pizzas={pizzas}
             isLoading={isLoading}
-            sortList={sortList}
-            sortItem={sortItem}
-            changeSortItem={changeSortItem}
         />}/>
         <Route path='/cart' element={<Cart/>}/>
         <Route path='/*' element={<NotFound/>}/>
